@@ -1,0 +1,72 @@
+
+docker 
+
+docker run --name mysqle11 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p 3306:3306 -d mysql
+
+
+$ mysql
+-bash: mysql: command not found
+
+// need to create alias
+$ alias mysql=/usr/local/mysql/bin/mysql
+
+check of mysql is working or not
+-ps aux | grep mysql
+
+//Access MySql Database
+mysql user=<username> -p      enter
+
+
+//get all commands
+help
+
+
+Note: ; is very important to end the command
+//list databases
+show databases;
+
+//use particular Database
+use <database name i.e mysql>;
+
+//list all tables in the Database
+show tables;
+
+//check structure of table
+describe <table name i.e user>;
+
+//do any query as you pleased
+
+//exit sql 
+exit;
+
+
+create Stored Procedure: A stored procedure is a segment of declarative SQL statements stored inside the MysSQL Server.
+
+https://mysqltutorial.org/
+
+
+DELIMITER $$
+
+CREATE procedure getAuthor()
+Begin
+	select * 
+    from 
+    author
+    order by id;
+    
+End$$
+Delimiter $
+
+
+// call stored Procedure
+
+getAuthor();
+
+
+
+Important add mysql driver first: add maven dependency
+
+
+
+
+
