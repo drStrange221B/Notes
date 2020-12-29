@@ -1,0 +1,33 @@
+for windows
+#check all the environment variable: set
+
+for mac:
+#check all environment variable: env
+
+inorder to set environment variable use .bashrc or .bash_profile
+
+check which shell is being used
+rojayamaharjna@Rojayas-MBP ~ % echo $SHELL
+/bin/zsh
+
+Check list of Shell that can be used
+rojayamaharjna@Rojayas-MBP ~ % cat /etc/shells
+# List of acceptable shells for chpass(1).
+# Ftpd will not allow users to connect who are not using
+# one of these shells.
+/bin/bash
+/bin/csh
+/bin/dash
+/bin/ksh
+/bin/sh
+/bin/tcsh
+/bin/zsh
+
+Install shell 
+brew install zsh
+
+check the version of shell
+zsh --version
+
+change shell
+chsh -s /bin/bash
