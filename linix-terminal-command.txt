@@ -1,0 +1,22 @@
+
+FIND
+
+find . -type d -name "<directory-name"  // finds the directory 
+find . -type f -name "<name-of-file>"   //file name is case sensitive 
+find . -type f -mmin -10   // files that are modified with in 10 minutes
+find . -type f -mmin +10  // files that are midified more than 10 minutes
+find . -type f -mmin +1 -mmin -5  // files that are modified more than one min and less than 5 min
+find . -type f -mtime +20   // files that were modified more than 20 days ago 
+
+//find files by file size
+find . -size +5M      // k= kbytes G = GB
+
+find . -empty  // find files that are empty
+find . -perm 777
+
+find . -exec chown rojay:maharjan {} +    //find all the file and change the owner and group name
+
+find . -type d -exec chmod 777 {} +   // find all the directory and change the permission to 777
+
+find 
+  
