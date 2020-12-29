@@ -1,0 +1,22 @@
+Start mongodb instance:
+mongod --port <port> dbpath=<path where you want to store>
+
+Kill all mongo instances
+sudo killall mongod
+
+
+search for a list of tasks running on your machine
+sudo lsof -iTCP -sTCP:LISTEN -n -P
+
+
+search for a list of tasks running on your machine
+sudo lsof -iTCP -sTCP:LISTEN -n -P | grep mongo
+
+
+kill mongo instance 
+sudo kill <mongo_command_pid>
+
+
+http://localhost:8080/name/sampe122
+http://localhost:8080/name/sampe122
+
