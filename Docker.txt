@@ -1,0 +1,142 @@
+
+Remove all Docker Instances
+docker rmi $(docker images -q)
+
+Hello World Docker
+docker run hello-world
+
+To Check The History of The Command run 
+ history | grep mango
+ 
+Check all the Docker instance running
+docker ps
+
+Check of the existing container
+docker ps -a
+
+Check the logs
+docker logs -f <CONTAINER ID>
+
+Kill Docker Process
+docker kill <CONTAINER ID>
+
+Stop Docker IMAGE
+docker stop <CONTAINER ID>
+
+Run Docker existing image
+ docker run -d <IMAGE NAME>        note: image you can check with command: docker ps -a
+ 
+
+Run Docker Image with Port mapping
+Configure Docker port:
+docker -p <host-port>:<docker-port> image      note: image you can check with command: docker ps -a
+ 
+Inspect docker image layers
+docker image inspect <docker image>
+
+Run history command 
+!<line Number>
+
+Save data in external folder for persistance 
+docker run -p 27027:27017 -v /Users/rojayamaharjna/mongodb/data:/data/db -d mongo
+
+
+
+How to pull docker image
+1) go to docker hub
+2) search for image name (mongo) 
+3) check Command at how to run the server. 
+4) run command on the machine.
+
+
+
+
+
+Running centos on docker 
+- docker run -d centos tail -f /dev/null
+
+Access Docker container terminal:
+
+docker exec -it <container name> bash
+
+
+Build Docker image
+1) create a file Dockerfile 
+2) run command in Dockerfile file existing directory:  docker build -t spring-boot-docker . 
+  here -t iwll tag the name of the docker image  and . means present directory.
+
+
+
+Docker House keeping:
+
+Killing all Running Docker Containers:
+- docker kill $(docker ps -q)
+
+Delete all Stoped Docker Containers
+- docker rm $(docker ps -a -q)
+
+Remove a Docker Image 
+- docker rmi <image id>
+
+Remove Untagged (dangling) images
+- docker rmi $(docker images -q -f dangling=true)
+
+Delete All Images
+- docker rmi $(docker images -q)
+
+
+Cleaning Up Volumes
+1) Once a volume is no longer associated with a container, it is considered 'dangling'.
+2) Remove all dangling Volumes
+- docker volume rm $(docker volume ls -f dangling=true -q)
+
+3) Note: Does not remove files from host system in shared volumes.
+
+
+Reference for any docker related command:
+
+https://springframework.guru/docker-cheat-sheet-for-spring-devlopers/
+
+
+
+
+
+
+
+
+docker run --name some-mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p 3306:3306 -v /Users/rojayamaharjna/mongodb/mysql:/var/lib/mysql -d mysql
+
+
+
+
+
+run --name some-mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p 3306:3306 -v /Users/rojayamaharjna/mongodb/mysql:/var/lib/mysql -d mysql
+
+
+
+How to check if port is in use in
+
+lsof -n -i :<port> | grep LISTEN
+
+kill <pid>
+
+
+
+
+To check the listening ports and applications on Linux:
+
+Open a terminal application i.e. shell prompt.
+Run any one of the following command on Linux to see open ports:
+sudo lsof -i -P -n | grep LISTEN
+sudo netstat -tulpn | grep LISTEN
+sudo lsof -i:22 ## see a specific port such as 22 ##
+sudo nmap -sTU -O IP-address-Here
+
+
+
+#
+
+
+
+
+
