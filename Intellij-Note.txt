@@ -1,0 +1,24 @@
+Common problems: 
+Error: Could not find or load main class com.pluralsight.corejdbc.m3c1.Main
+Caused by: java.lang.ClassNotFoundException: com.pluralsight.corejdbc.m2c1.Main
+or
+Error: java: error: release version 5 not supported
+
+Solution: update Intellij to correct version
+
+<IntelliJ IDEA>>Preferences>Build, Execution, Deployment> Compiler> javaCompiler
+  Project bytecode version == <desired java version>
+  Add Module if it is not shown
+  make sure Target bytecode version is matched
+ 
+Next
+  Right click on the project> Open Module Settings>Modules
+  Language Level: desired java version level> apply
+  
+Next
+  SDKs>Name : set that to desired version
+  
+also make sure OS is running on correct version of java
+
+
+  
