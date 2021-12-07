@@ -173,3 +173,8 @@ find
   
 
 
+Connamd line: 
+esc + .   => to re-enter the previous parameter
+file <fileName>  => check the type of the file
+
+
