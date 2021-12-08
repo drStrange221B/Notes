@@ -177,4 +177,12 @@ Connamd line:
 esc + .   => to re-enter the previous parameter
 file <fileName>  => check the type of the file
 
+Chmod: change mode
+4 => read
+2 => write
+1 => execute
+0 => no permission
+
+Adding short cuts: 
+~/.vimrc
 
