@@ -1,4 +1,54 @@
 ﻿# Terminal Cheatsheet for Mac (Basics)
+ 
+ Bash: 
+ # TO FIND THE DEFAULT SHELL
+ printenv SHELL
+ 
+ whoami - username
+ id - user ID and group ID
+ uname - operating system namne
+ ps - running processess
+ top - resource usage - displays running processes and resource usage including memory, CPU, and IO
+ df - mounted file system
+ man - reference manual
+ date - prints todays date
+ 
+ Wroking with files
+ cp - copy file
+ mv - change file name or path
+ rm - remove file
+ touch - create empty file, update file timestamp
+ chmod - change/modify file permissions
+ wc - get count of lines, words, characters in files
+ grep - return lines in file matching pattern
+ 
+ Navigatingn and working with directories
+ ls - list files and directories 
+ find - find files in directory tree
+ pwd - get present working directory
+ cd - change directory
+ rmdir - remove directory
+ 
+ Printing file and string contents
+ cat - print file contents
+ more - print file content page-by-page
+ head - print first N lines of file
+ tail - print last N lines of files
+ echo - print string or variable value
+ 
+ Compression and archiving
+ tar - archive a set of files
+ zip - compress a set of files 
+ unzip - extract files from a compressed zip archive
+ 
+ Networking
+ hostname - print hostname
+ ping - send packets to URL and print response
+ ifconfig - display or configure system network interfaces
+ curl - display contents of files at url
+ wget - download file from URL
+ 
+ 
 
 
 
