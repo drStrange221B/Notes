@@ -25,16 +25,45 @@
  Navigatingn and working with directories
  ls - list files and directories 
  find - find files in directory tree
+ find . -name "a.txt"  - find all file called a.text in current directory
+ fine . -iname "a.txt" - to perform a case insensitive version of your search
  pwd - get present working directory
  cd - change directory
  rmdir - remove directory
+ 
  
  Printing file and string contents
  cat - print file contents
  more - print file content page-by-page
  head - print first N lines of file
+ head -n 3 numbers.txt   - prints first 3 lines of the numbers.txt
  tail - print last N lines of files
+ tail -n 3 numbers.txt  - prints last 3 lines of the numbers.txt
+ wc - counting lines, words, and characters
+ wc pets.txt ( lines, words, characters) 
+ wc -l word.txt   - view only lines counts
+ wc -w word.txt   - view only words counts
+ wc -c word.txt   - view character count 
  echo - print string or variable value
+ 
+ Action on files
+ sort - sort llines in a file
+ sort pets.txt   => sorts the content of the file pets.txt
+ sort -r pets.txt   => lines sorted in the reversed
+ uniq  ( "unique") => filter out repeated lines ( consicutive repeated lines)
+ uniq pets.txt.  => only the unique lines 
+ grep  ( "global regular expression print")  => Return lines in file matching pattern 
+ grep ch people.txt  =>  Returns all the lines with ch 
+ grep -i ch people.txt => Returns all the lines with ch regarless of case 
+ cut => Extracts a sections from each line
+ cut -c 2-9 people.txt   => extract characters 2 to 9 from every line
+ cut -d ' ' -f2   => cutting to extract the second field from each line
+ paste - Merge lines from different files 
+ paste first.txt last.txt yob.txt  => merge lines from all three files
+ paste -d "," first.txt last.txt yob.txt => merge lines seperated by ,
+ 
+ 
+ 
  
  Compression and archiving
  tar - archive a set of files
