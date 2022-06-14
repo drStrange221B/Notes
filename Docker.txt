@@ -5,6 +5,58 @@ docker rmi $(docker images -q)
 Hello World Docker
 docker run hello-world
 
+Check inside Docker container
+docker container ls
+docker container run -it <image> <process/application>
+
+exit out of container without killing process and container 
+ctr + p + q 
+
+Get IP of the container
+docker inspect -f "{{ .NetworkingSettings.Networks.nat.IPAddress }}" <container>
+
+Logging:
+Engine/daemon
+
+Linux
+- systemd:
+ journalclt -u doctor.service
+- Non-systemmd: /var/log/message
+
+Window
+~/AppData/Local/Docker
+
+set default logging driver in daemon.json
+
+Docker Swarm
+docker swarm init
+
+Join docker to swarm
+docker swarm join <crypto join token>      this will keep the docker into swarm
+
+check the info of the docker
+docker system info   
+
+check the docker nodes
+docker node ls
+
+get join token 
+docker swarn join-token manager
+
+docker swarm join --token <token>
+
+list node
+docker node ls
+
+Worker Join token
+docker swarm join-token worker
+
+look up client certificate
+sudo openssl x509 -in /var/lib/docker/swarm/certificates/swarm-node.crt -text
+
+update certificate docker certificate 
+docker swarm update --cert-expiry 48h
+
 To Check The History of The Command run 
  history | grep mango
  
