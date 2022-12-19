@@ -1,0 +1,59 @@
+# docker version 
+docker -version 
+
+# List Docker Images
+docker images
+
+# Build Docker Image. need to be in location of the Dockerfile
+docker build . -t <give image name>
+
+# Inspect Image
+docker image inspect <image id>
+
+# List All running Docker Container
+docker ps
+
+# List out all the Docker Containers running/not running
+docker ps -a 
+
+# Create and run Docker container from image
+docker run -p 8080:8080 <image Name> 
+
+# Run docker container in Deamond mode
+docker run -d -p 8080:8080 <image Name>
+
+# logs of the container
+docker logs <Container Id>
+
+# live logs of the container
+docker logs -f <Container Id>
+
+# Stop Container
+docker stop <container Id>
+
+# Pause Container
+docker pause <Container Id>
+
+# Unpause Container
+docker unpause <Container Id>
+
+# Start existing Container
+docker start <container Id>
+
+# Inspect Docker Container
+docker container inspect <Container Id>
+
+# Kill Docker Container (hard kill) 
+docker kill <Container Id>
+
+# get the stats of Docker 
+docker stats
+
+# Remove Docker Container
+docker rm <Container Id>
+
+
+
+
+
+
