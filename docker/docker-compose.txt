@@ -1,0 +1,50 @@
+# install docker compose. it is a single location whwere can compose multiple docker images to container at once
+
+# Check the version of Docker
+docker-compose version
+
+# valid filenames for docker compose
+docker-compose.yml, 
+docker-compose.yaml
+compose.yaml
+compose.yaml
+
+
+
+docker-compose.yml
+
+########################################### file starts ###################################
+
+verson: "3.8"  # docker verson is maked version we can check at docker compose web site
+
+services:
+  accounts:
+    image: <imageName>
+    men_limit: 700m
+    port:
+      - "8080 : 8080"
+    networks: 
+      - <network Name>
+      
+  loans:
+    images: <image Name>
+    men_linkt: 700m
+    ports:
+      - "8090:8090"
+    networks:
+      - <network Name>
+      
+ networks:
+    <network Name>:
+   
+   
+################################ File Ends Here ###################
+
+
+# Run Docker compose
+docker-compose up
+
+# stop container with compose
+docker-compose stop
+
+
