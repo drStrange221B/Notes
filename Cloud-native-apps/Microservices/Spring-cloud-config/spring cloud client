@@ -1,0 +1,20 @@
+add dependency
+
+spring-cloud-starter-config
+dependencyManagement
+
+application.properties
+
+spring.application.name= application name must match the name of configuration file name
+spring.profiles.active= 
+spring.config.import=configserver:http://<config-server-domain-name>
+
+
+@Configuration
+@ConfigurationProperties(prefix="accounts")
+@Getter
+@Setters
+@ToString
+public class <ClassName>{
+
+}
