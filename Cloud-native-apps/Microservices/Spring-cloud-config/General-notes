@@ -1,0 +1,43 @@
+Spring Cloud config is a seperate sub project of Springboot application. There are two application. 
+1) springboot config server and 
+2) springboot config client
+
+
+Springboot Config Server:
+add dependencies: Config Server
+
+
+Add Spring Actuator:
+
+DependencyManagement: make sure springboot version is mapped properly with spring cloud version. We can check at spring cloud website
+
+Add @EnableConfigServer
+add this to enable the configuration server 
+
+
+
+###########################################################
+How to make config server reade from class path
+1) add all confituration.properties file under src/main/resources/config eg. accounts.properties, accounts-dev.properties, accounts-prod.properties, cards.properties
+2)application.properties 
+
+spring.application.name = configserver
+spring.profiles.active= native.     ## native for local file system where as git for github repo
+spring.could.config.server.native.search-location = classpath:/config
+server.port=8071
+
+
+## Access properties file
+<host domain name>:port/<application name>/default or /dev
+eg. localhost:8080/applicationName/default
+eg. localhost:8080/applicationName/dev
+
+
+
+
+
+
+
+
+
+
