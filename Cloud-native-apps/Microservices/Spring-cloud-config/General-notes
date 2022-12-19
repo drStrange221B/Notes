@@ -23,7 +23,8 @@ How to make config server reade from class path
 
 spring.application.name = configserver
 spring.profiles.active= native.     ## native for local file system where as git for github repo
-spring.could.config.server.native.search-location = classpath:/config
+spring.cloud.config.server.native.search-location = classpath:/config   # add this for properties file at classpath
+spring.cloud.config.server.native.search-location = file:///C://config. # files that are located in the file system
 server.port=8071
 
 
@@ -33,6 +34,14 @@ eg. localhost:8080/applicationName/default
 eg. localhost:8080/applicationName/dev
 
 
+================================================================================= Read all config files from git hub location ============================
+
+spring.application.name = configserver
+spring.profiles.active= git.     ## native for local file system where as git for github repo
+spring.cloud.config.server.git.url= <add git hub url>
+spring.cloud.config.server.git.clone-on-start=true
+spring.cloud.config.server.git.default-label=main
+server.port=8071
 
 
 
