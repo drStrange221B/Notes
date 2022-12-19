@@ -28,5 +28,6 @@ services:
         SPRING_PROFILES_ACTIVE: prod
         SPRING_CONFIG_IMPORT: configserver:http://configserver:8080/
         
-        
+     networks:
+    <network Name>:   
    
