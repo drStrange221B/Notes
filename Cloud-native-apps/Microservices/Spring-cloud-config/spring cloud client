@@ -33,4 +33,11 @@ management.endpoints.web.exposure.include=*
 <DomainName>:port/actuator
 eg localhost:8080/actuator
 
+Note: Refresh won't work for the properties like DB details like DB url, user name and password. As datasource is created during 
+the start of the springboot application. These kind of password needs the server restart.
+
+
+
+
+
 
