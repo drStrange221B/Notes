@@ -1,0 +1,60 @@
+Service discovery and registrations deals with the problems about how microservices talks to each other, i.e perform API calls
+Micro services discovery and registration is a way for applicaitons and microservices to locate each other on a network. This includes
+ 1) A central server ( or servers) that maintain a global view of address.
+ 2) Microservices/clients that connect to the central server to register their address when they start and ready
+ 3) Microservices/client needs to send their heartbeats at regular intervals to central server about their health.
+ 
+ Spring Cloud project makes Service Discovery and Registration setup trival to undertake with the help of the below components.
+ 1) Spring cloud Netflix's Eureka service which will act as a service discovery agent
+ 2) spring Cloud Load Balancer library for client-side load balancing
+ 3) Netflix Feign client to lok up for a service b/w microservices
+ 
+ it is a separete microservice for service discovery
+ # Add dependency
+ 1) Eureka Server
+ 2) Config Client
+ 3) Spring Boot Actuator
+ 
+ # Exclude spring-cloud-starter-ribbon and ribbon-eureka
+ 
+ <dependency>
+    <groudId>org.springframework.cloud</groudId>
+    <artifactId>spring-cloud-starter-netflix-eureka-server</aertifactId>
+    <exclusions>
+      <exclusion>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-ribbon</artifactId>
+      </exclusion>
+      <exclusion>
+        <groupId>com.netflix.ribbon</groudId>
+        <artifactId>ribbon-eureka</artifactId>
+      </exclusion>
+ </dependency>
+ 
+ 
+ # Add the annotation at springbootapplication
+ @EnableEurekaServer
+ @SpringBootApplicaton
+ 
+ # add properties in application.properties
+ spring.application.name=eurekaserver
+ spring.config.import=optional:configserver:http://localhost:8071
+ spring.cloud.loadbalancer.ribbon.enabled=false
+ 
+ 
+# Eureka server properties file in github
+server.port=9090
+eureka.instance.hostname=localhost
+eureka.instance.registerWithEureka=false
+eureka.client.fetchRegistry=false
+eureka.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:${server.port}/eureka/
+
+# access Eureka dashboard <domainname>
+localhost:8080
+
+
+ 
+ 
+ 
+ 
+ 
