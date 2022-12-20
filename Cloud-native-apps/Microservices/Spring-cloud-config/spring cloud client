@@ -18,3 +18,19 @@ spring.config.import=configserver:http://<config-server-domain-name>
 public class <ClassName>{
 
 }
+
+## Refresh the cloud config properties
+@RefreshScope
+
+eg
+@RefreshScope
+@SpringBootApplication
+
+## expose all the Endpoint for the spring Actuator in application.properties file
+management.endpoints.web.exposure.include=*
+
+## Check all the endpoint of springboot actuator
+<DomainName>:port/actuator
+eg localhost:8080/actuator
+
+
