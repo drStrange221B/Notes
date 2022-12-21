@@ -53,7 +53,31 @@ eureka.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:${server
 localhost:8080
 
 
- 
+ # integratin Eureka Discovery with the client
+  1) add spring-cloud-starter-config
+  2) spring-cloud-starter-netflix-eureka-client
+  2) Application.properties for how to connect to Eureka dicovery server and config for info details and enable shutdown endpoint actuator
+  
+  =====================================
+  
+  management.endpoint.shutdown.,enabled=true
+  endpoits.shutdown.enabled=true
+  
+  eureka.instance.preferIpAddress = true
+  eureka.client.registerWithEureka = true
+  eureka.client.fetchRegistry = true
+  eureka.client.serviceUrl.defaultZone = http://localhost:8080/eureka/
+  
+  ### Configuring info endpoint
+  info.app.name= <name of the Microservice> Microservices
+  info.app.description = Eazy Bank Cards Application
+  info.app.version = 1.0.0
+  
+  
+  
+  
+  
+  
  
  
  
