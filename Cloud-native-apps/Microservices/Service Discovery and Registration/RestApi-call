@@ -1,0 +1,29 @@
+make rest Api call with client side load balancing with feign client
+
+# adding feign client
+<dependency>
+  <grpudId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-openfeign</artifiactId>
+ </dependency>
+ 
+ create an interface which acts as proxy whenever there is need to invoke other micro services
+ 
+ inside package service.client
+ interface.class
+ 
+ @FeignClient("cards")
+ public interface CardsFeignClient{
+ 
+    
+      @RequestMapping(method= RequestMethod.POST, value = "myCards", consumers = "application/json")
+      List<Cards> getCardDetails(@RequestsBody Customer customer);
+ 
+ }
+ 
+ 
+ @Autowired
+ CardsFeignClient cardFeignClient;
+ 
+ cardFeignClient.getCardDetails(customer);
+ 
+ 
