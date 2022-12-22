@@ -1,0 +1,65 @@
+How to route based on custom requirements
+for custome requiremnets to route the incoming requests to the appropriate destiantiion both in static and dynamic way
+
+How do we handle cross cutting concerns
+In a distributed microservices architecture, how do we make sure to have a consistently enforced cross cutting concerns like logging,
+adutiting, tracing, security and metrics collection across multiple microservices
+
+How do we build a single Gatekeeper
+How to de build a single gatekeeper for all the inbound traffic to our microservices which will act as a central policy Enforcement point(PEP)
+for all service calls?
+
+Spring Cloud Gateway is a blirary for building an API gateway,
+- Spring Cloud Gateway is intended to sit between a requester and a resource that's being requested, where it intercepts, analyzes, and modifies 
+  every request.
+- It route request based on their context. Eg did a request include a header indicating an API version. we can route that request to the 
+  appropriately versioned backend. Does request requires sticky sessions. 
+- Spring Cloud Gateway can keep track of each user's session.
+
+Spring Cloud Gateway is replacement of Zuul for the following reasons and advantages,
+ - Spring Cloud Gataway is the preferred API Gateway implementation from the Spring Cloud Team. It's build on Spring 5, Reactor, and Spring WebFlux.
+   it includes circuit braker integrationm service deiscorvy with Eureka
+ - Spring Cloud API Gateway is non-blocking in nature. Though later Zuul 2 also supports it, but Spring Cloud Gateway has an edge here
+ - Spring Cloud Gateway has a superior performance compared to that of Zuul.
+ 
+ add dependency
+ 1) Spring Cloud config
+ 2) spring-cloud-starter-gateway
+ 3) spring-cloud-starter-eureka-client
+ 4) spring-actuator
+ 5) build<plugins>plugin>groupId>org.springframework.boot>artifactId>spring-boot-maven-plugin>configuration>image>name>ImageName
+ 
+ @EnableEurekaClient
+ @SpringBootApplication
+ 
+ application.properties
+ 
+ spring.application.name=gatewayserver
+ spring.config.import=optional:configserver:http://localhost:8071
+ management.endpoints.web.exposure.include=*
+ management.info.env.enabled=true
+ 
+ ## Configuring info endpoint
+ info.app.name=Gateway Server Microservice
+ info.app.description=Eazy Bank Gateway Server Application
+ info.app.version=1.0.0
+ 
+ spring.cloud.gateway.discovery.locator.enabled=true
+ spring.cloud.gateway.discovery.locator.lowerCaseServiceId=true
+ 
+ logging.level.com.emrys.gatewayserver: DEBUG
+ 
+ ==============================================================
+ application.properties for Gatewayserver.properties
+ 
+ server.port=8080
+ 
+ eureka.instance.preferIpAddress=true
+ eureka.client.registerWithEureka=true
+ eureka.client.fetchRegistry=true
+ eureka.client.serviceUrl.defaultZone= http://localhost:8070/eureka/
+ 
+ 
+ 
+ 
+ 
