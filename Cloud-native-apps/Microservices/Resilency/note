@@ -1,0 +1,125 @@
+How to avoid cascading failures
+How to handle failure gracefully with fallbacks
+How to make services self-healing capable
+
+Use of Resilience4j offers following patterns for increasing fault tolerance due to network problems or failure of nay lf the multiple services:
+1) Circuit breaker - Used to stop making request when a service invoked is failing. 
+2) Fallback - Alternative paths to failing requests
+3) Retry - Used to make retries when a service has temporarily failed 
+4) Rate limit - limits the number of calls that a service receives in a time.
+5) Bulkhead - limits the number of outgoing concurrent requests to a service to avoid overloading.
+
+Circuit Breaker: 
+Advantages
+- Fail Fast
+- Fail Gracefully
+- Recover Seamlessly
+
+In Resilence4j the circuit breaker is implemented via a finite state machine with the following states
+1) CLOSED - initially the circuit breaker starts with Closed status and accepts client requests
+2) OPEN - If circuit breaker sees a threshold requests are failing, then it will OPEN the circuit which will make requests fail fast
+3) HALF_OPEN - Periodically Circuit breaker checks if the issue is resloved by allowing few requests. Based on the results it will either go to CLOSED or OPEN. 
+
+
+Implementation of Resilience4j
+1) add dependency
+   <dependency>
+    <groupId>io.github.resilience4j</groudId>
+    <artificatId>resilience4j-spring-boot2</artificateId>
+   </dependency>
+   
+   <dependency>
+    <groupId>io.github.resilience4j</groudId>
+    <artificatId>resilience4j-circuitbreaker</artifactId>
+   </dependency>
+   
+   <dependency>
+    <groupId>io.github.resilience4j</groudId>
+    <artificatId>resilience4j-timelimiter</artificatId>
+   </dependency>
+   
+   <dependency>
+    <groupId>org.springframework.boot</groudId>
+    <artificatId>spring-boot-starter-aop</artificatId>
+   </dependency>
+   
+   
+   @PostMapping("/myapi")
+   @CicuitBreaker(name="circuitBreakerForMyApi", fallbackMethod = "circuitBreakerFallBack")
+   public string myApi(String str)
+   {
+   
+   }
+   
+   private String circuitBreakerFallBack(String str, Throwable t){
+   
+   }
+   
+   Add properties parameters in application.properties
+   resilience4j.circuitbreaker.configs.default.registerHealthIndicator = true
+   resilience4j.circuitbreaker.instances.circuitBreakerForMyApi.minimumNumberOfCalls=5
+   resilience4j.circuitbreaker.instances.circuitBreakerForMyApi.failureRateThreshold=50
+   resilience4j.circuitbreaker.instances.circuitBreakerForMyApi.waitDurationsInOpenState=30000
+   resilience4j.circuitbreaker.instances.circuitBreakerForMyApi.permittedNumberOfCallsInHalfOpenState=2
+   
+   ====================================================================
+   
+   Retry Pattern
+   For retry pattern we can configure the following values,
+   maxAttempts - The Maximum number of attemts
+   waitDutation - A fixed wait duration between retry attempts
+   retryExceptions - Configurations a lists of Throable classes that are recorded as a failure and thus are retried.
+   ignoreException - Configures a lists of Throable classes that are ignored and thus are not retired.
+   
+   
+   @PostMapping("/myapi")
+   @Retry(name="retryForCustomerDetails", fallbackMethod = "retryFallBack")
+   public string myApi(String str)
+   {
+   
+   }
+   
+   private String circuitBreakerFallBack(String str, Throwable t){
+   
+   }
+   
+   application.properties file parameters
+   resilience4j.retry.configs.default.registerHealthIndicator=true
+   resilience4j.retry.instances.retryForCustomerDetails.maxRetryAttempts=3
+   resilience4j.retry.instances.retryForCustomerDetails.waitDuration=2000
+   
+   
+   ===========================================================================
+   
+   RATE LIMITTER PATTERN
+   This pattern protects api and servie endpoints form harmful effects, such as denial of service, cascading failure.
+   The rate limitter pattern willhelp to stop overloading the service with more calls more than it can consume in a given time.
+   This is an imperative technique to prepare our API for high availability and reliability.
+   
+   For rate limitter pattern we can cofigure the following value
+   1) timeoutDuration - The default wait time a thread waits for a permission
+   2) limitForPeriod - The number of permissions available during one limit refresh period
+   3) limitRefreshPeriod - The period of a limit refresh. After each period the rate limiter sets its p3rmissions count back to the
+      limitForPeriod value.
+      
+    @RateLimiter(name="detailsForCustomerSupportApp", fallbackMethod="myCustomerDetailsFallBack")
+    
+    Application.properties
+    resilience4j.ratelimiter.configs.default.registerHealthIndicator = true
+    resilience4j.ratelimiter.instances.detailsForCustomerSupportApp.timeoutDuration=5000
+    resilience4j.ratelimiter.instances.detailsForCustomerSupportApp.limitRefreshPeriod=5000
+    resilience4j.ratelimiter.instances.detailsForCustomerSupportApp.limitForPeriod=1
+    
+    =====================================================================================
+    
+    BULKHEAD PATTERN
+    Bulkhead Pattern help us to allocate limit the resources which can be used for specific services. So that resource exhaustion can be reduced.
+    
+    For Bulkhead pattern we can configure the following values,
+      MaxConcurrentCalls - Max amount of parallel exexutions allowed by the bulkhead
+      maxWaitDuration - Max amount of time a thread should be blocked for when attempting to enter a saturated bulkhead
+      
+  @Buldhead(name="bulkheadAccounts", fallbackMethod="bulkheadAccountsFallBack")
+  
+  
+   
