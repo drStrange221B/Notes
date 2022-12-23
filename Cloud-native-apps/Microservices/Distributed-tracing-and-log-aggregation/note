@@ -1,0 +1,48 @@
+we can use 
+1) Spring Cloud Sleuth
+2) Zipkin
+
+Spring Cloud Sleuth: 
+- Spring Cloud Sleuth provides Spring Boot auto-configuration for distributed tracing.
+- It adds trace and span ids to all the logs, so you can just extract from a given trace or span in a log aggregator.
+- it does this by adding the filters and interacting with other Spring components to let the correlation IDs being generated pass through to all the system
+  calls
+  
+  Zipkin
+  - Zipkin is an open-source data-visualization tool that can help aggregating all the logs and gather timing data needed to troubleshoot
+    latency problems in microservices architectures.
+  - it allows us to break a transaction down into its component pieces and visually identify where there might be performance hotspots.
+    Thus reducing time in triaging by contextualizing errors and delays.
+    
+Spring Cloud Sleuth will add three pieces of information to all the logs written by a microservice.
+      [<App Name>,<Trace ID>,<Span ID>]
+Application name of the service: This is going to be the application name where the log entry is being made. Spring cloud Sleuth get this name from teh 'spring.application.name' 
+                                  property.
+Trace ID: Trace ID is the equivalent term for correlation ID. It's unique number that represents an entire transaction.
+Span ID: A span ID is a unique ID that represents part of the overall transaction. Each service participating within the transaction will have
+its own span ID. Span IDs are particularly relevant when you integrate with Zipkin to visualize your transactions.
+
+
+=========================================
+add dependency in all the micro services
+1) org.springframework.cloud   spring-cloud-starter-sleuth
+## all the logs will be automatically integrate with the spring boot
+
+===========================================
+Integration of spring boot with zipkin
+
+1) start the Zipkin server from the docker image 
+2) add dependency in all the microservices
+   org.springframework.cloud
+   spring-cloud-sleuth-zipkin
+   
+  add this properties in applicaton.properties files of all the microservices
+  spring.sleuth.sampler.percentage=1    # i.e 100%
+  spring.zipkin.baseUrl=http://localhost:9411/
+  
+  
+  
+  
+
+
+
