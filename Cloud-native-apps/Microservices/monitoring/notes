@@ -1,0 +1,22 @@
+Different Approcaches to Monitor
+1) Actuator: Actuator is mainly used to expose operational information about the running application health, metrics, info, dump, env, etc. 
+  It uses HTTP endpoints or JMX beans to enable us to interact with it.
+   
+2) Micrometer: Micrometer automatically exposes /actuator/metrics data into something your monitoring system can understand. All you need to do 
+  is include that vendor-specific micrometer dependency in your application. Think SLF4J, but for matrics
+3) PROMETHEUS: It is a time-series database that stores our metric data by pulling it (using a built-in-data scraper) periodically over HTTP. It also 
+   has simple user interface where we can visualize/query on all of the collected metrics.
+4) GRAFANA: Grafana can pull data from various data sources like Prometheus and offers a rich UI where you can build up custom graphs quickly 
+   and create a dashboard out of many graphs in no time. It also allows you to set rule-based alerts, for notifications.
+   
+========================================================================
+
+add dependencies
+io.micrometer> micrometer-core
+io.micrometer> micrometer-registry-prometheus
+org.springframework.boot> spring-boot-starter-aop
+
+
+
+
+
