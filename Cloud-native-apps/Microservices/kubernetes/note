@@ -31,4 +31,14 @@ important components.
    each one container per pod. It acts as the small individual servers.
 
 
+Kubernetes is so modular, flexible, and extensible that it can be deployed 0n-prem, in a third-parth data center, 
+in any of the popular cloud providers and enven across multiple cloud providers.
+Creating and maintaining a K8s cluster can be very challenge in on-prem. Due to that many exterprises looks for the 
+cloud providers which will make their job easy to maintain their microservice architecture using Kubernetes
+Below is the different famous cloud providers and their support to Kubernetes with the different names.
+1) GCP - GKE ( Google Kubernetes Engine)
+2) AWS - EKS ( Elastic Kubernetes Service)
+3) Azure - AKS ( Azure Kubernetes Service)
+
+
 
