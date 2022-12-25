@@ -2,3 +2,33 @@
 2) create kubernetes cluster.
 3) Get Cloud SDK. 
 
+Clusters: Kubernetes will handle cluster of nodes inside microservices architecture. Cluster is the collection of various servers working 
+together to achieve some meaningful work.
+A master not is present in cluster which will maintain all servers in the cluster. Any cluster will have Master Node and the Worker Nodes.
+Worker node is responsible for all the work i.e accepting request from the clients and procesing it in their respective container. 
+Master node will take care of the health of entire cluster (Worker Node). 
+
+Role of Master Node is to make sure all the worker nodes are working properly. If there is any issue it will takes care of it.
+It has 4 components:
+1) Kube API Server: Master node exposes all API using Kube API servers.It is the gateway to Master node. It also acts as
+   the gate keeper, so that only the authorized request goes through. UI and CLI ( Commnad Line Interface) with name Kube ctl
+   or kube controller. Any time we need to interact with cluster, Master node is the only way to do that. Any instruction 
+   for cluster such as add a node, remove node, self heal node. 
+2) Scheduler: Request came thought kube API Server are passed on to Scheduler. It is responsible to work with worker node
+   it does all the calculation and decides which worker node is suitable for the deployment.
+3) Controller Manager: It is responsible for maintaining the health of the worker node. It acts based on the configuration
+   and maintains the deisre state. Controller Manager works with ETCD to extract the necessary information details.
+4) ETCD: It is the brain of the master node. It stores all the necessary info of cluster details in the key value pair. 
+   
+Worker Nodes: 
+There can be any number of worker nodes, based on the traffic of the client request. Inside worker node there will 3 
+important components.
+1) Kublet: It is an agent that runs on each worker nodes. It is the gateway component. It acts as the bridge or getway 
+   between worker node and master node.
+2) Docker: all the apps/services are deployed to container using docker.
+3) Kube-proxy: Kube-proxy is the gate way for clients where it authentica and authorize all the client request. 
+4) Pod: Pod is the smallest deployment unit in worker node. Inside pods we deploy all the micro services. Ideally 
+   each one container per pod. It acts as the small individual servers.
+
+
+
