@@ -80,4 +80,16 @@ check all the component under avilable in Kubernetes cluster
 
 services (kube-proxy) is concept under Kubernetes, through which we connect to the outside clients
 
+check/get exesting configuration
+kubectl get configmap
+
+apply/implement config
+kubectl apply -f <config name>
+
+delete configMap
+>kubectl get configmap
+>kubectl delete configmap <configmanpName>
+
+
+
 
