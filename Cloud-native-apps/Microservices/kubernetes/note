@@ -110,4 +110,36 @@ Deploy micro services in kubernetes.
  LoadBalancer: it is expeosed to outer client. It must have two IP address. cluster-ip is for enternal use where as 
                External-IP is for exposing to the external world.
  
+increase replicas:
+kubectl scale deployment accounts-deployment --replicas=<no. of desife replicas>
+
+check what is the current image does the current deployment has
+> kebectl describe pod <pod name>
+
+deploy sepcicif image:
+kubectl set image deployment <deployment Name> <containerName>=<new Image>:<tagName>
+
+get history of events
+> kubectl get events --sort-by=.metadata.creationTimestamp
+
+get rollout history deployment:
+Kubectl rollout history deployment <deploymebnt>
+
+deployment for desire version
+kubectl rollout undo deployment <deployment name> --to-revision=<revision number>
+
+get logs from specific pod
+get pods first
+> kubectl get pods
+> kubectl logs <pods name>
+
+HORIZONTAL POD AUTO SCALING (HPA) 
+
+check for HPA stats
+> kubectl get hpa
+
+define auto scaling insturctions 
+> kubectl autoscale deployment <deployment name> --min=<min no.> --max=<mix no.> --cpu-percent=<percent no.
+
+
 
