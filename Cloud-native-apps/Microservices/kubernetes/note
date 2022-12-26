@@ -1,6 +1,15 @@
 1) create GCP account (Goole Cloud Provider). https://cloud.google.com. 
 2) create kubernetes cluster.
-3) Get Cloud SDK. 
+3) Get Cloud SDK. cloud.google.com/sdk/docs/quickstart. This will help use to execute command to GCP on local laptop 
+   using command Promt/terminal or the CLI that is provided by GCP.
+4) Once Cloud SDK is install. Run - gcloud init
+5) Accept the option to log in using google account.
+6) click on the console button at the top right corner.
+7) create project.
+8) search Kubernetes. It will land on Kubernetes Engine dashboard.
+9) Create a cluster. By default it will has three nodes.
+10) 
+
 
 Clusters: Kubernetes will handle cluster of nodes inside microservices architecture. Cluster is the collection of various servers working 
 together to achieve some meaningful work.
