@@ -49,5 +49,35 @@ Below is the different famous cloud providers and their support to Kubernetes wi
 2) AWS - EKS ( Elastic Kubernetes Service)
 3) Azure - AKS ( Azure Kubernetes Service)
 
+Enable Logging: Search> API and Services > Enable API and Services
+search> looging > select Cloud Logging API > Enable
+search> Stackdriver API, Stackdriver Monitoring API, Stackdriver Trace API, Stackdriver Error Reporting API, Stackdriver Profiler API
+
+Command-line-access:
+gcloud container clusters get-credentials <cluster-name> --zone <zone-name> --project microservices-316111
+
+Activate Cloud Shell:
+
+Check if we have connected to cluster: 
+>> kubectl get nodes      ## provides the nodes avilable in the cluster
+>> gcloud --verson   ## check for the version of the cloud install
+
+
+connect to cluster
+gcloud container clusters get-credentials <cluster-name> --zone <zone-name> --project microservices-316111
+
+check/get nodes
+get nodes
+
+check/get pods
+get pods
+
+check/get deployment
+get deployment
+
+check all the component under avilable in Kubernetes cluster
+> kubectl get all
+
+services (kube-proxy) is concept under Kubernetes, through which we connect to the outside clients
 
 
