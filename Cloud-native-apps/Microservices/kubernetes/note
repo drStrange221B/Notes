@@ -90,6 +90,24 @@ delete configMap
 >kubectl get configmap
 >kubectl delete configmap <configmanpName>
 
-
-
+Deploy micro services in kubernetes.
+ check/get existing pods
+ > kubectl get pods
+ 
+ check existing deployments
+ > kubectl get deployments
+ 
+ check existing services: this expeses microservices to outer clients
+ > kubectl get services
+ 
+ check for replicaset
+ > kubectl get replicaset
+ 
+ deploy service
+ > kubectl appluy -f <kubernetes deployment yml>
+ 
+ Services type
+ LoadBalancer: it is expeosed to outer client. It must have two IP address. cluster-ip is for enternal use where as 
+               External-IP is for exposing to the external world.
+ 
 
