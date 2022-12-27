@@ -1,0 +1,17 @@
+Helm is widely know as the package manager for k8s. The goal of Helm was to provide users with a better way to manage
+all the Kubernetes YAML files we create on Kubernetes projects.  
+
+install helm
+> brew install helm
+
+From chocolatey (Windows)
+> choco install kubernetes-helm
+
+check version
+> helm -version
+
+create helm chart
+> helm create <Helm chart Name>
+
+
+
