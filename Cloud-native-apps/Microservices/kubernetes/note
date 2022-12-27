@@ -109,6 +109,8 @@ Deploy micro services in kubernetes.
  Services type
  LoadBalancer: it is expeosed to outer client. It must have two IP address. cluster-ip is for enternal use where as 
                External-IP is for exposing to the external world.
+ cluster IP: restricted to the inside custer. It is not exposed to outside cluster.
+ 
  
 increase replicas:
 kubectl scale deployment accounts-deployment --replicas=<no. of desife replicas>
