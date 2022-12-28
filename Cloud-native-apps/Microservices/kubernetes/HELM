@@ -13,5 +13,26 @@ check version
 create helm chart
 > helm create <Helm chart Name>
 
+Install chart into the helm
+> helm install <give name for installation> <location where chart is created with chart name>
+
+inside workload there will deployment and inside services there will be services created. The default 
+service is limited inside the cluster. Inorder to expose the service to the outer client we need to 
+create new service called Ingress. 
+
+In Values.yml, 
+ingress: 
+  enabled: true 
+
+To create the ingress service.
+
+Upgrade Helm:
+> helm upgrade <deployemnt-name> <chart-name>
+
+Mapping of the Ingress hostname with ip address is necessary, inorder to expose the services to the external
+world
+
+Uninstall Helm
+> helm uninstall <deploynment-name>
 
 
